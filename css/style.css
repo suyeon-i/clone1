@@ -148,7 +148,6 @@ header .utils ul li a {
 	top: 50%;
 	transform: translate(0,-50%);
 }
-
 section {
 	display: flex;
 	flex-direction: column;
