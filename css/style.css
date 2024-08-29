@@ -92,8 +92,9 @@ header .utils li:last-child a::after {
 .menu {
 	position: relative;
 	height: 55px;
+	min-width: 1020px;
 }
-.menu nav { 
+.menu nav {
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -167,6 +168,7 @@ header .utils li:last-child a::after {
 }
 .slider {
 	position: relative;
+	min-width: 1020px;
 	height: 480px;
 	background-color: #999;
 }
@@ -497,6 +499,7 @@ section {
 
 footer {
 	padding: 55px 0;
+	min-width: 1020px;
 	text-align: center;
 	font-size: 15px;
 	font-weight: 300;
