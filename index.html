@@ -6,17 +6,74 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap">
-<link rel="shortcut icon" type="image/x-icon" href="http://static.wconcept.co.kr/favicon.ico" sizes="16x16">
-<link rel="icon" type="image/x-icon" href="http://static.wconcept.co.kr/favicon.ico" sizes="16x16">
 <link rel="stylesheet" href="css/style.css">
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script>
+$(function(){
+	let sliderN=0;
+	$("nav > ul > li").hover(
+		function(){
+			$("nav").addClass("active");
+		},
+		function(){
+			$("nav").removeClass("active")
+		}
+	);
+
+	$("nav > ul > li > a").focusin(function(){
+		console.log($(this).parent().index());
+
+		if($(this).parent().index() == 0){
+			$("nav").addClass("active");
+		}
+		$(this).parent().addClass("active");
+	});
+
+	let total=$("nav > ul > li").length;
+
+	$("nav li li:last-child a").focusout(function(){
+		if($(this).parent().parent().parent().index() == total-1){
+			$("nav").removeClass("active");
+		}
+		$(this).parent().parent().parent().removeClass("active");
+	});
+
+	$(".keyvisual li").eq(sliderN).addClass("active");
+
+	$(".right_arrow").click(function(e){
+		e.preventDefault();
+
+		if(sliderN < 3){
+			sliderN=sliderN+1;
+		}
+		else{
+			sliderN=0;
+		}
+
+		$(".keyvisual li").removeClass("active");
+		$(".keyvisual li").eq(sliderN).addClass("active");
+	});
+
+	$(".left_arrow").click(function(e){
+		e.preventDefault();
+
+		if(sliderN > 0){
+			sliderN=sliderN-1;
+		}
+		else{
+			sliderN=3;
+		}
+
+		$(".keyvisual li").removeClass("active");
+		$(".keyvisual li").eq(sliderN).addClass("active");
+	});
+});
+</script>
 </head>
 
 <body>
 <div class="wrapper">
-	<div class="skip_nav">
-		<a href="#section">본문 바로가기</a>
-	</div>
-	<header id="header">
+	<header>
 		<div class="sns">
 			<ul>
 				<li><a href=""><img src="images/social_icon1.gif" alt="social_icon1"></a></li>
@@ -25,6 +82,7 @@
 			</ul>
 			<a href=""><img src="images/btn_mileage.gif" alt="btn_mileage"></a>
 		</div>
+
 		<div class="logo">
 			<h1><a href=""><img src="images/logo.png" alt="logo"></a></h1>
 		</div>
@@ -36,8 +94,8 @@
 			</ul>
 		</div>
 	</header>
-<div class="menu">
-	<nav id="nav">
+	<div class="menu">
+	<nav>
 		<ul>
 			<li>
 				<a href="">NEW</a>
@@ -90,14 +148,18 @@
 	</nav>
 </div>
 	<div class="slider">
-		<img src="images/key1.jpg" alt="key1"></a>
-		<!--
-		<div class="direction">
-			<a href="" class="left_allow"><img src="images/btn_left.png" alt="btn_left"></a>
-			<a href="" class="right_allow"><img src="images/btn_right.png" alt="btn_right"></a>
-		</div>-->
+		<ul class="keyvisual">
+			<li><a href="" title="key1"><img src="images/key1.jpg" alt="key1"></a></li>
+			<li><a href="" title="key2"><img src="images/key2.jpg" alt="key2"></a></li>
+			<li><a href="" title="key3"><img src="images/key3.jpg" alt="key3"></a></li>
+			<li><a href="" title="key4"><img src="images/key4.jpg" alt="key4"></a></li>
+		</ul>
+		<ul class="direction">
+			<li class="left_arrow"><a href="" class="left_allow"><img src="images/btn_left.png" alt="btn_left"></a></li>
+			<li class="right_arrow"><a href="" class="right_allow"><img src="images/btn_right.png" alt="btn_right"></a></li>
+		</ul>
 	</div>
-	<section id="section">
+	<section>
 		<div class="banner1">
 			<div class="banner1_1">
 				<a href=""><img src="images/buttero.jpg" alt="buttero"></a>
